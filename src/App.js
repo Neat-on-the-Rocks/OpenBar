@@ -1,11 +1,20 @@
 import React from "react";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
+import HomePage from 'scenes/homePage'
+import LoginPage from "scenes/loginPage";
+import ProfilePage from "scenes/profilePage";
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Header</h1>
-      </header>
+      <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<LoginPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/profile/:userId" element={<ProfilePage />} />
+      </Routes>
+      </BrowserRouter>
     </div>
   );
 }
