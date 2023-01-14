@@ -7,3 +7,33 @@ body,
   width: 100%;
 
 }
+.dark{
+  background-color: black;
+  color: white
+}
+
+.light{
+  background-color: white;
+  color: black;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.navbar > .left-nav{
+  display: flex;
+  align-items: center;
+  gap: 5vw;
+}
+.navbar > .right-nav{
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+}
+.navbar > .right-nav > .icon{
+  width: 50px;
+}
