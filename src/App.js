@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
-import HomePage from 'scenes/homePage'
-import LoginPage from "scenes/loginPage";
-import ProfilePage from "scenes/profilePage";
+import HomePage from 'scenes/homePage/HomePage'
+import LoginPage from "scenes/loginPage/LoginPage";
+import ProfilePage from "scenes/profilePage/ProfilePage";
 
 function App() {
 
