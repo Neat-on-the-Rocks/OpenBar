@@ -101,15 +101,11 @@ export default function Form() {
             <form onSubmit={handleSubmit}>
                 {!isLogin &&
                 <>
-                <label htmlFor="firstName">First Name:</label>
-                <input label="firstName" type="text" name="firstName" onChange={handleChange} onBlur={handleBlur} value={values.firstName} error={touched.firstName && errors.firstName} />
-                <label htmlFor="lastName">Last Name:</label>
-                <input label="lastName" type="text" name="lastName" onChange={handleChange} onBlur={handleBlur} value={values.lastName} error={touched.lastName && errors.lastName} />
-                <label htmlFor="location">Location:</label>
-                <input label="location" type="text" name="location" onChange={handleChange} onBlur={handleBlur} value={values.location} error={touched.location && errors.location} />
-                <label htmlFor="occupation">Occupation:</label>
-                <input label="occupation" type="text" name="occupation" onChange={handleChange} onBlur={handleBlur} value={values.occupation} error={touched.occupation && errors.occupation} />
-                <div className='dropzoneContainer'>
+                <input label="firstName" type="text" name="firstName" placeholder='First Name' onChange={handleChange} onBlur={handleBlur} value={values.firstName} error={touched.firstName && errors.firstName} />
+                <input label="lastName" type="text" name="lastName" placeholder='Last Name'onChange={handleChange} onBlur={handleBlur} value={values.lastName} error={touched.lastName && errors.lastName} />
+                <input className="span2" label="location" type="text" name="location" placeholder='Location' onChange={handleChange} onBlur={handleBlur} value={values.location} error={touched.location && errors.location} />
+                <input className="span2" label="occupation" type="text" name="occupation" placeholder='Occupation' onChange={handleChange} onBlur={handleBlur} value={values.occupation} error={touched.occupation && errors.occupation} />
+                <div className='dropzoneContainer span2'>
                     <Dropzone onDrop={acceptedFiles => setFieldValue("picture", acceptedFiles[0])}>
                         {({getRootProps, getInputProps}) => (
                         <section>
@@ -122,11 +118,9 @@ export default function Form() {
                     </Dropzone>
                 </div>
                 </>}
-                <label htmlFor="email">Email:</label>
-                <input label="email" type="text" name="email" onChange={handleChange} onBlur={handleBlur} value={values.email} error={touched.email && errors.email} />
-                <label htmlFor="Password">password:</label>
-                <input label="password" type="password" name="password" onChange={handleChange} onBlur={handleBlur} value={values.password} error={touched.password && errors.password} />
-                <button type="submit">{isLogin ? "LOGIN" : "REGISTER"}</button>
+                <input className="span2" label="email" type="text" name="email" placeholder='Email' onChange={handleChange} onBlur={handleBlur} value={values.email} error={touched.email && errors.email} />
+                <input className="span2" label="password" type="password" name="password" placeholder='Password' onChange={handleChange} onBlur={handleBlur} value={values.password} error={touched.password && errors.password} />
+                <button className="span2" type="submit">{isLogin ? "LOGIN" : "REGISTER"}</button>
                 {isLogin ? <h4 onClick={() => setPageType("register")}>Dont have an Account? Register</h4> : <h4 onClick={() => setPageType("login")}>Already Have an Account? Login</h4>}
             </form>
         )}
