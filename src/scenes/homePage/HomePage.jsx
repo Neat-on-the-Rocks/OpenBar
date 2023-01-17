@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import NavBar from 'scenes/navBar/NavBar'
-import PostWidget from 'scenes/widgets/PostWidget'
+import PostsWidget from 'scenes/widgets/PostsWidget'
 import UserPostWidget from 'scenes/widgets/UserPostWidget'
 
 export default function HomePage() {
@@ -11,7 +11,7 @@ export default function HomePage() {
       <NavBar />
       <h2>Homepage</h2>
       <UserPostWidget picturePath={picturePath} />
-      <PostWidget userId={_id} />
+      <PostsWidget userId={_id} />
     </div>
   )
 }
