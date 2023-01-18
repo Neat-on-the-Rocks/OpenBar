@@ -11,13 +11,14 @@ export default function UserPostWidget({picturePath}) {
     const [isImage, setIsImage] = React.useState(false)
     const [image, setImage] = React.useState(null)
     const [post, setPost] = React.useState("")
-    const {_id} = useSelector((state) => state.user);
+    const {_id, location} = useSelector((state) => state.user);
     const token = useSelector((state) => state.token)
 
     const handlePost = async () => {
         const formData = new FormData();
         formData.append("userId", _id);
         formData.append("description", post);
+        formData.append("location", location)
         if (image) {
           formData.append("picture", image);
           formData.append("picturePath", image.name);
@@ -36,8 +37,7 @@ export default function UserPostWidget({picturePath}) {
   return (
     <div className='new-user-post'>
         <div className='write'>
-            {/* <img src={picturePath} /> */}
-            <div className='img-temp'></div>
+            <img src={`http://localhost:5000/assets/${picturePath}`} alt=""/>
             <input placeholder="What's on your mind..." onChange={(e) => setPost(e.target.value)} value={post} />
         </div>
         <div className='drop-box'>
