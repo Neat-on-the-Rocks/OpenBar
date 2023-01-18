@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,600;1,300&display=swap');
 
+*{
+  --beige: #d8bcab;
+  --orange: #d97b41;
+  --grey: #877a72;
+}
 
 html,
 body,
 #root,
 .App {
   font-family: "Rubik", serif;
-  height: 100vh;
+  height: auto;
   width: 100vw;
   margin: 0;
 }
