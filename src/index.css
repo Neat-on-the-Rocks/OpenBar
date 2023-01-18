@@ -180,3 +180,50 @@ body,
 }
 
 /*Profile widget*/
+
+.profile-widget{
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--widgets);
+  border-radius: 15px;
+  padding: 3vh;
+}
+
+.profile-widget > hr{
+  width: 30vw;
+}
+
+.profile-widget > .user-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.profile-widget > .user-info > .user{
+  display: flex;
+  gap:10px;
+}
+
+.profile-widget > .user-info > .user > img{
+  height: 5vh;
+  width: 5vh;
+  border-radius: 5vw;
+}
+
+/*Global CSS*/
+
+.icon-text{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.space-between{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 3px;
+}
