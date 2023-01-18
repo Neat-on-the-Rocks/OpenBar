@@ -1,6 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPost } from 'state';
+import {AiTwotoneLike} from 'react-icons/ai'
+import {IconContext} from 'react-icons'
+import {FaComments} from 'react-icons/fa'
 
 export default function PostWidget({postId, likes, postUserId, name, location, userPicturePath, description, picturePath, comments}) {
     const [isComments, setIsComments] = React.useState(false)
@@ -23,12 +26,15 @@ export default function PostWidget({postId, likes, postUserId, name, location, u
         dispatch(setPost({ post: updatedPost }));
     }
   return (
-    <div className='post'>
-        <p>Friend Id: {postUserId}</p>
-        <p>Name: {name}</p>
-        <p>Loaction: {location}</p>
-        <p>Picture: {userPicturePath}</p>
-        <p>description: {description}</p>
+    <div className='post-box'>
+        <div className="poster-info">
+            <img src={`http://localhost:5000/assets/${userPicturePath}`} alt="" />
+            <div className="text">
+                <h3>{name}</h3>
+                <p>{location}</p>
+            </div>
+        </div>
+        <p className="post-text">{description}</p>
         {picturePath && (
         <img
           width="100%"
@@ -38,17 +44,30 @@ export default function PostWidget({postId, likes, postUserId, name, location, u
           src={`http://localhost:5000/assets/${picturePath}`}
         />
         )}
-        <p onClick={patchLikes}>LikeButton</p> {/*Make sure to add conditional icon based on isLiked */}
-        <p># comments {comments.length}</p> {/*Conditionally render comments*/}
-        {isComments && (
-            <div className='comments'>
-                {comments.map((comment, i) => (
-                    <div key={`${name}-${i}`}>
-                        <p>{comment}</p>
-                    </div>
-                ))}
+        <div className="interact-post">
+         {/*Make sure to add conditional icon based on isLiked */}
+            <div className="comment-count">
+                <IconContext.Provider value={isLiked && {color: 'red'}} >
+                    {likeCount}
+                    <AiTwotoneLike  size={20} onClick={patchLikes}/>
+                </IconContext.Provider>
             </div>
-        )}
+
+            <div className="comment-count">
+                {comments.length ? comments.length:0} <FaComments size={20}/>
+            </div>
+
+             {/*Conditionally render comments*/}
+            {isComments && (
+                <div className='comments'>
+                    {comments.map((comment, i) => (
+                        <div key={`${name}-${i}`}>
+                            <p>{comment}</p>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
 
     </div>
   )
