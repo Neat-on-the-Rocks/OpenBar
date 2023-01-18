@@ -4,6 +4,11 @@
   --beige: #d8bcab;
   --orange: #d97b41;
   --grey: #877a72;
+  --page: rgb(25, 22, 22);
+  --widgets: rgba(136, 135, 135, 0.177);
+  --inputs: rgb(100, 100, 100);
+  --borders: white;
+  --text: white;
 }
 
 html,
@@ -21,8 +26,8 @@ body,
   align-items: center;
 }
 .dark{
-  background-color: rgb(25, 22, 22);
-  color: white
+  background-color: var(--page);
+  color: var(--text)
 }
 
 .light{
@@ -81,7 +86,7 @@ body,
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background-color: rgba(136, 135, 135, 0.177);
+  background-color: var(--widgets);
   width: 42vw;
   border-radius: 15px;
 }
@@ -94,7 +99,7 @@ body,
 }
 
 .new-user-post > .write > input {
-  background-color: rgb(100, 100, 100);
+  background-color: var(--inputs);
   color: rgb(255, 255, 255);
   width: 30vw;
   border-radius: 25px;
@@ -102,25 +107,24 @@ body,
   ;
 }
 .new-user-post > .write > input::placeholder {
-    color: white
+    color: var(--text);
   ;
 }
 .new-user-post > .write > img{
   width:4vw ;
   height: 4vw;
   border-radius: 50px;
-  background-color: rgb(246, 245, 245);
 }
 
 .new-user-post > .drop-box {
-  border: 1px solid white;
+  border: 1px solid var(--borders);
   width: 38vw;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .new-user-post > .drop-box  > section{
-  border: 1px dashed white;
+  border: 1px dashed var(--borders);;
   margin: 2vw;
   width: 36vw;
 }
@@ -136,16 +140,10 @@ body,
   size: 42vw;
 }
 
-/*Style Posts container*/
-
-.posts-container{
-  background-color: rgb(25, 22, 22);
-}
-
 /*Style Post box*/
 
 .post-box{
-  background-color: rgba(136, 135, 135, 0.177);
+  background-color: var(--widgets);
   width: 42vw
 }
 
@@ -180,3 +178,5 @@ body,
   gap: 1vh;
   margin-bottom: 1vh;
 }
+
+/*Profile widget*/
