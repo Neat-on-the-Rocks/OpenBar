@@ -4,6 +4,7 @@ import NavBar from 'scenes/navBar/NavBar'
 import PostsWidget from 'scenes/widgets/PostsWidget'
 import UserPostWidget from 'scenes/widgets/UserPostWidget'
 import ProfileWidget from 'scenes/widgets/ProfileWidget'
+import FriendListWidget from 'scenes/widgets/FriendListWidget'
 
 
 export default function HomePage() {
@@ -15,6 +16,7 @@ export default function HomePage() {
       <UserPostWidget picturePath={picturePath} />
       <PostsWidget userId={_id} />
       <ProfileWidget picturePath={picturePath} location={location} occupation={occupation} name={firstName + ' ' +lastName}/>
+      <FriendListWidget userId={_id} />
     </div>
   )
 }
