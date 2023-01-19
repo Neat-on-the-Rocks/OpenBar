@@ -9,6 +9,7 @@
   --inputs: rgb(100, 100, 100);
   --borders: white;
   --text: white;
+  --accent:  #87CEFA;
 }
 
 html,
@@ -43,11 +44,28 @@ body,
   width: 90vw;
 }
 
+h1{
+  color: var(--accent)
+}
+
 .navbar > .left-nav{
   display: flex;
   align-items: center;
   gap: 5vw;
 }
+
+.navbar > .left-nav > input{
+  background-color: var(--inputs);
+  color: rgb(255, 255, 255);
+  width: 30vw;
+  border-radius: 25px;
+  padding: 5px 10px 5px 10px;
+}
+
+.navbar > .left-nav > input::placeholder {
+  color: var(--text);
+}
+
 .navbar > .right-nav{
   display: flex;
   align-items: center;
@@ -104,7 +122,6 @@ body,
   width: 30vw;
   border-radius: 25px;
   padding: 5px 10px 5px 10px;
-  ;
 }
 .new-user-post > .write > input::placeholder {
     color: var(--text);
@@ -226,4 +243,8 @@ body,
   align-items: center;
   justify-content: space-between;
   margin: 3px;
+}
+
+input:focus {
+  outline-color: var(--accent)
 }
