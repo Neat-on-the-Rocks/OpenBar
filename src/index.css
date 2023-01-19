@@ -263,3 +263,31 @@ h1{
 input:focus {
   outline-color: var(--accent)
 }
+
+/*Friend Container*/
+
+.friend-container{
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--widgets);
+  border-radius: 15px;
+  padding: 3vh;
+}
+
+.friend-container > div > .space-between {
+  padding-right: 10px;
+}
+.friend-container > div > .space-between > .friend-info > img{
+  height: 5vh;
+  width: 5vh;
+  border-radius: 5vw;
+}
+
+.friend-container > div  .space-between > .friend-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1vw;
+  gap: 10px;
+}
