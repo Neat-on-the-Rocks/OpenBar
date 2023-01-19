@@ -153,8 +153,20 @@ h1{
   width: 42vw;
   margin: 2vh;
 }
-.new-user-post > .buttons >svg {
-  size: 42vw;
+.new-user-post > .buttons > button{
+  background-color: var(--accent);
+  padding: 10px;
+  border-radius: 20px;
+  border-style: solid;
+}
+
+.new-user-post > .buttons > button:disabled{
+  background-color: white;
+}
+
+.new-user-post > .buttons > button:active{
+  background-color: #6395b4;
+  color: rgba(244, 244, 244, 0.73);
 }
 
 /*Style Post box*/
