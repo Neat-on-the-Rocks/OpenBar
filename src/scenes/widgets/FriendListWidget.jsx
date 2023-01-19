@@ -28,7 +28,7 @@ export default function FriendListWidget({userId}) {
 
     console.log(friends)
   return (
-    <div>
+    <div className='friend-container'>
       <h2>Friends List</h2>
     {friends.map((friend) => {
       return <FriendBox key={`key${friend._id}`} friendId={friend._id} friendName={`${friend.firstName} ${friend.lastName}`} occupation={friend.occupation} picturePath={friend.picturePath}/>
