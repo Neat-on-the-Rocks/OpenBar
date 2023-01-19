@@ -13,10 +13,16 @@ export default function HomePage() {
     <div>
       <NavBar />
       <h2>Homepage</h2>
-      <UserPostWidget picturePath={picturePath} />
-      <PostsWidget userId={_id} />
-      <ProfileWidget picturePath={picturePath} location={location} occupation={occupation} name={firstName + ' ' +lastName}/>
-      <FriendListWidget userId={_id} />
+      <div className='page-content'>
+        
+        <ProfileWidget picturePath={picturePath} location={location} occupation={occupation} name={firstName + ' ' +lastName}/>
+        <div className='center'>
+          <UserPostWidget picturePath={picturePath} />
+          <PostsWidget userId={_id} />
+        </div>
+        <FriendListWidget userId={_id} />
+        
+      </div>
     </div>
   )
 }

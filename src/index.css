@@ -169,6 +169,13 @@ h1{
   color: rgba(244, 244, 244, 0.73);
 }
 
+/*Posts Container*/
+.posts-container{
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1vh;
+  padding-top: 3vh
+}
 /*Style Post box*/
 
 .post-box{
@@ -214,7 +221,7 @@ h1{
 /*Profile widget*/
 
 .profile-widget{
-  width: 30vw;
+  width: 20vw;
   display: flex;
   flex-direction: column;
   background-color: var(--widgets);
@@ -223,7 +230,7 @@ h1{
 }
 
 .profile-widget > hr{
-  width: 30vw;
+  width: 20vw;
 }
 
 .profile-widget > .user-info{
@@ -267,7 +274,7 @@ input:focus {
 /*Friend Container*/
 
 .friend-container{
-  width: 30vw;
+  width: 20vw;
   display: flex;
   flex-direction: column;
   background-color: var(--widgets);
@@ -290,4 +297,11 @@ input:focus {
   align-items: center;
   margin: 1vw;
   gap: 10px;
+}
+
+.page-content{
+  width: 100vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
 }
