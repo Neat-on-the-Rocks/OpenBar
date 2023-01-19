@@ -1,9 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setPost } from 'state';
+import { setFriends, setPost } from 'state';
 import {AiTwotoneLike} from 'react-icons/ai'
 import {IconContext} from 'react-icons'
 import {FaComments} from 'react-icons/fa'
+import {BsFillPersonPlusFill, BsFillPersonDashFill } from 'react-icons/bs'
 
 export default function PostWidget({postId, likes, postUserId, name, location, userPicturePath, description, picturePath, comments}) {
     const [isComments, setIsComments] = React.useState(false)
@@ -12,6 +13,16 @@ export default function PostWidget({postId, likes, postUserId, name, location, u
     const loggedInUserId  = useSelector((state) => state.user._id)
     const isLiked = Boolean(likes[loggedInUserId])
     const likeCount = Object.keys(likes).length;
+    const friends = useSelector((state) => state.user.friends)
+    const isFriend = friends.some(friend => friend._id === postUserId)
+
+    const displayIcon = () => {
+        if (isFriend){
+            return  <BsFillPersonDashFill size={20} onClick={patchFriend}/>
+        } else {
+            return <BsFillPersonPlusFill size={20} padding={5} onClick={patchFriend}/>
+        }
+    }
 
     const patchLikes = async () => {
         const response = await fetch(`http://localhost:5000/posts/${postId}/like`, {
@@ -25,14 +36,34 @@ export default function PostWidget({postId, likes, postUserId, name, location, u
         const updatedPost = await response.json();
         dispatch(setPost({ post: updatedPost }));
     }
+
+    const patchFriend = async () => {
+        const response = await fetch(
+          `http://localhost:5000/users/${loggedInUserId}/${postUserId}`,
+          {
+            method: "PATCH",
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        const data = await response.json();
+        dispatch(setFriends({ friends: data }));
+    }
+
   return (
     <div className='post-box'>
-        <div className="poster-info">
-            <img src={`http://localhost:5000/assets/${userPicturePath}`} alt="" />
-            <div className="text">
-                <h3>{name}</h3>
-                <p>{location}</p>
+        <div className='space-between'>
+            <div className="poster-info">
+                <img src={`http://localhost:5000/assets/${userPicturePath}`} alt="" />
+                <div className="text">
+                    <h3>{name}</h3>
+                    <p>{location}</p>
+                </div>
             </div>
+            { postUserId !== loggedInUserId && displayIcon()}
         </div>
         <p className="post-text">{description}</p>
         {picturePath && (

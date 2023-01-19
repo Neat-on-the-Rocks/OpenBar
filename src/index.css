@@ -173,16 +173,19 @@ h1{
 
 .post-box{
   background-color: var(--widgets);
-  width: 42vw
+  width: 42vw;
 }
 
-.post-box > .poster-info > img{
+.post-box > .space-between {
+  padding-right: 10px;
+}
+.post-box > .space-between > .poster-info > img{
   height: 5vh;
   width: 5vh;
   border-radius: 5vw;
 }
 
-.post-box > .poster-info {
+.post-box > .space-between > .poster-info {
   display: flex;
   flex-direction: row;
   align-items: center;
