@@ -2,7 +2,6 @@ import FriendBox from 'components/FriendBox';
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFriends } from 'state';
-import {BsFillPersonPlusFill, BsFillPersonDashFill } from 'react-icons/bs'
 
 export default function FriendListWidget({userId}) {
 
@@ -25,8 +24,7 @@ export default function FriendListWidget({userId}) {
   React.useEffect(() => {
     getFriends();
   }, []);
-
-    console.log(friends)
+  
   return (
     <div className='friend-container'>
       <h2>Friends List</h2>

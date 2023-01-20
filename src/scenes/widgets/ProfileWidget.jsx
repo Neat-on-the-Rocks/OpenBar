@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 export default function ProfileWidget({picturePath, location, occupation,  name}) {
     const friends = useSelector((state) => state.user.friends);
-    console.log(friends.length);
+
   return (
     <div className='profile-widget'>
         <div className='user-info'>
