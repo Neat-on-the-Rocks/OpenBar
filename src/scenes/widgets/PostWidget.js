@@ -78,7 +78,7 @@ export default function PostWidget({postId, likes, postUserId, name, location, u
         <div className="interact-post">
          {/*Make sure to add conditional icon based on isLiked */}
             <div className="comment-count">
-                <IconContext.Provider value={isLiked && {color: 'red'}} >
+                <IconContext.Provider value={isLiked && {color: '#87CEFA'}} >
                     {likeCount}
                     <AiTwotoneLike  size={20} onClick={patchLikes}/>
                 </IconContext.Provider>
