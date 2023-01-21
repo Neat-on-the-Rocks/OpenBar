@@ -306,3 +306,30 @@ input:focus {
   justify-content: space-around;
   align-items: baseline;
 }
+
+/*Profile Page*/
+
+.profile-head{
+  display: flex;
+  background-color: var(--widgets);
+  width: 48vw;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2vh;
+}
+.profile-head > .left{
+  display: flex;
+  gap: 3vh;
+}
+.profile-head > .left> img{
+  width: 15vh;
+  height: 15vh;
+  border-radius: 15vh;
+}
+
+.profile-head >.right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
