@@ -19,7 +19,7 @@ export default function NavBar() {
   return (
     <div className='navbar'>
       <div className='left-nav'>
-        <h1>OpenBar</h1>
+        <h1 onClick={() => navigate("/home")}>OpenBar</h1>
         <input className='search' placeholder="Search" />
       </div>
       <div className='right-nav'>
