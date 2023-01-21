@@ -12,8 +12,8 @@ export default function FriendBox({friendId, occupation, picturePath, friendName
     const { _id } = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
     const friends = useSelector((state) => state.user.friends);
-
     const isFriend = friends.find((friend) => friend._id === friendId);
+    const loggedInId = useSelector((state) => state.user._id)
 
     const patchFriend = async () => {
         const response = await fetch(
@@ -49,7 +49,7 @@ export default function FriendBox({friendId, occupation, picturePath, friendName
                     <p>{occupation}</p>
                 </div>
             </div>
-            { displayIcon()}
+            { loggedInId !== friendId && displayIcon()} {/*Still Displays on page load for a second...maybe setting state of profile on redux will help*/}
         </div>
     </div>
   )
