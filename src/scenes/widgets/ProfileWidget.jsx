@@ -3,16 +3,18 @@ import {RiUserSettingsFill} from 'react-icons/ri'
 import {MdLocationPin} from 'react-icons/md'
 import {BsBriefcaseFill} from 'react-icons/bs'
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-export default function ProfileWidget({picturePath, location, occupation,  name}) {
+export default function ProfileWidget({picturePath, location, occupation,  name, userId}) {
     const friends = useSelector((state) => state.user.friends);
 
+    const navigate = useNavigate()
   return (
     <div className='profile-widget'>
         <div className='user-info'>
             <div className='user'>
                 <img src={`http://localhost:5000/assets/${picturePath}`} alt=""/>
-                <h3>{name}</h3>
+                <h3 onClick={ () => navigate(`/profile/${userId}`)}>{name}</h3>
             </div>
             <RiUserSettingsFill size={25} />
         </div>

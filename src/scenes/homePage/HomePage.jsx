@@ -15,7 +15,7 @@ export default function HomePage() {
       <h2>Homepage</h2>
       <div className='page-content'>
         
-        <ProfileWidget picturePath={picturePath} location={location} occupation={occupation} name={firstName + ' ' +lastName}/>
+        <ProfileWidget userId={_id} picturePath={picturePath} location={location} occupation={occupation} name={firstName + ' ' +lastName}/>
         <div className='center'>
           <UserPostWidget picturePath={picturePath} />
           <PostsWidget userId={_id} />

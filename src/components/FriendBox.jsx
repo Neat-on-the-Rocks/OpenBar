@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 //import { useNavigate } from 'react-router-dom';
 import { setFriends } from 'state';
 import {BsFillPersonPlusFill, BsFillPersonDashFill } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom';
 
 export default function FriendBox({friendId, occupation, picturePath, friendName}) {
 
     const dispatch = useDispatch();
-    // const navigate = useNavigate(); will be used to navigate to user profile
+    const navigate = useNavigate();
     const { _id } = useSelector((state) => state.user);
     const token = useSelector((state) => state.token);
     const friends = useSelector((state) => state.user.friends);
@@ -44,7 +45,7 @@ export default function FriendBox({friendId, occupation, picturePath, friendName
             <div className="friend-info">
                 <img src={`http://localhost:5000/assets/${picturePath}`} alt="" />
                 <div className="text">
-                    <h3>{friendName}</h3>
+                    <h3 onClick={() => navigate(`/profile/${friendId}`)}>{friendName}</h3>
                     <p>{occupation}</p>
                 </div>
             </div>

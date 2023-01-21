@@ -5,6 +5,7 @@ import {AiTwotoneLike} from 'react-icons/ai'
 import {IconContext} from 'react-icons'
 import {FaComments} from 'react-icons/fa'
 import {BsFillPersonPlusFill, BsFillPersonDashFill } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom';
 
 export default function PostWidget({postId, likes, postUserId, name, location, userPicturePath, description, picturePath, comments}) {
     const [isComments, setIsComments] = React.useState(false)
@@ -15,6 +16,7 @@ export default function PostWidget({postId, likes, postUserId, name, location, u
     const likeCount = Object.keys(likes).length;
     const friends = useSelector((state) => state.user.friends)
     const isFriend = friends.some(friend => friend._id === postUserId)
+    const navigate = useNavigate()
 
     const displayIcon = () => {
         if (isFriend){
@@ -59,7 +61,7 @@ export default function PostWidget({postId, likes, postUserId, name, location, u
             <div className="poster-info">
                 <img src={`http://localhost:5000/assets/${userPicturePath}`} alt="" />
                 <div className="text">
-                    <h3>{name}</h3>
+                    <h3 onClick={() => navigate(`/profile/${postUserId}`)}>{name}</h3>
                     <p>{location}</p>
                 </div>
             </div>
