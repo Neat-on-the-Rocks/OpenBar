@@ -48,9 +48,6 @@ export default function ProfilePage() {
 
   if(!user) return null
 
-
-  const memberSince = new Date(user.createdAt);
-
   const options = { month: "long" };
 
   const displayAddButton = () => {
@@ -64,19 +61,29 @@ export default function ProfilePage() {
     <div className='profile-page'>
       <NavBar />
       <div className='profile-head'>
+        <div className='left'>
         <img src={`http://localhost:5000/assets/${user.picturePath}`} alt=""/>
-        <div className='info'>
-          <h3>{`${user.firstName} ${user.lastName}`}</h3>
-          <h4>{user.location}</h4>
-          <h4>{user.occupation}</h4>
+          <div className='info'>
+            <h3>{`${user.firstName} ${user.lastName}`}</h3>
+            <h4>{user.location}</h4>
+            <h4>{user.occupation}</h4>
+          </div>
         </div>
-        <h4>{`Member Since: ${new Intl.DateTimeFormat("en-US", options).format(memberSince)} ${new Date(user.createdAt).getYear() + 1900}`}</h4>
-        {loggedInId !== userId && displayAddButton()}
+        <div className='right'>
+        <h4>{`Member Since: ${new Intl.DateTimeFormat("en-US", options).format(new Date(user.createdAt))} ${new Date(user.createdAt).getYear() + 1900}`}</h4>
+        <h4>{`Friends: ${friends.length} `}</h4>
+          <div className='button-container'>
+          {loggedInId !== userId && displayAddButton()}
+          {loggedInId !== userId ? <button>Send Message</button> : <button>Edit Profile</button>}
+          </div>
+        </div>
+        
+        
       </div>
       
       
       <FriendListWidget userId={userId} />
-      <PostsWidget userId={user._id}  isProfile="true"/>
+      <PostsWidget userId={user._id}  isProfile="true" />
     </div>
   )
 }
