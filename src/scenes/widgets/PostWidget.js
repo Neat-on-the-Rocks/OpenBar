@@ -7,7 +7,7 @@ import {FaComments} from 'react-icons/fa'
 import {BsFillPersonPlusFill, BsFillPersonDashFill } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom';
 
-export default function PostWidget({postId, likes, postUserId, name, location, userPicturePath, description, picturePath, comments}) {
+export default function PostWidget({postId, likes, postUserId, name, location, userPicturePath, description, picturePath, comments, isProfile}) {
     const [isComments, setIsComments] = React.useState(false)
     const dispatch = useDispatch();
     const token = useSelector((state) => state.token)
@@ -17,6 +17,9 @@ export default function PostWidget({postId, likes, postUserId, name, location, u
     const friends = useSelector((state) => state.user.friends)
     const isFriend = friends.some(friend => friend._id === postUserId)
     const navigate = useNavigate()
+    console.log(postUserId);
+    console.log(isFriend);
+    console.log(friends);
 
     const displayIcon = () => {
         if (isFriend){
@@ -65,7 +68,7 @@ export default function PostWidget({postId, likes, postUserId, name, location, u
                     <p>{location}</p>
                 </div>
             </div>
-            { postUserId !== loggedInUserId && displayIcon()}
+            { postUserId !== loggedInUserId && isProfile === false && displayIcon()}
         </div>
         <p className="post-text">{description}</p>
         {picturePath && (
