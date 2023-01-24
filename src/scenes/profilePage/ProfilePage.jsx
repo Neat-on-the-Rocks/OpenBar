@@ -14,7 +14,6 @@ export default function ProfilePage() {
   const loggedInId = useSelector((state) => state.user._id)
   const friends = useSelector((state) => state.user.friends);
   const isFriend = friends?.find((friend) => friend._id === userId);
-  const navigate = useNavigate()
 
   const getUser = async () => {
     const response = await fetch(`http://localhost:5000/users/${userId}`, {
@@ -71,7 +70,7 @@ export default function ProfilePage() {
         </div>
         <div className='right'>
           <h4>{`Member Since: ${new Intl.DateTimeFormat("en-US", options).format(new Date(user.createdAt))} ${new Date(user.createdAt).getYear() + 1900}`}</h4>
-          <h4 onClick={()=>navigate(`/profile/${userId}/friends`)}>{`Friends: ${friends.length} `}</h4>
+          <h4>{`Friends: ${friends.length} `}</h4>
           <div className='button-container'>
             {loggedInId !== userId && displayAddButton()}
             {loggedInId !== userId ? <button>Send Message</button> : <button>Edit Profile</button>}

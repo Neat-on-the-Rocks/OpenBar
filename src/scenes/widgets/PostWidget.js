@@ -17,9 +17,6 @@ export default function PostWidget({postId, likes, postUserId, name, location, u
     const friends = useSelector((state) => state.user.friends)
     const isFriend = friends.some(friend => friend._id === postUserId)
     const navigate = useNavigate()
-    console.log(postUserId);
-    console.log(isFriend);
-    console.log(friends);
 
     const displayIcon = () => {
         if (isFriend){
