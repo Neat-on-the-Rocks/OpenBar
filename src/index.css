@@ -333,3 +333,27 @@ input:focus {
   align-items: flex-end;
 }
 
+.profile-head > .right .button-container > button {
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.profile-head > .right .button-container > button:active {
+  box-shadow: 0 0 0 2px inset #5d8ead;
+}
+
+.profile-head > .right .button-container > button:hover{
+  padding: 11px;
+  box-shadow: 0 0 0 3px #877a723b;
+ }
+
+.add-button {
+  background-color: var(--accent);
+}
+
+.remove-button{
+  background-color: rgb(215, 215, 215);
+}
+
+
