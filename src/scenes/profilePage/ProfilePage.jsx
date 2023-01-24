@@ -1,8 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import NavBar from 'scenes/navBar/NavBar'
-import FriendListWidget from 'scenes/widgets/FriendListWidget'
 import PostsWidget from 'scenes/widgets/PostsWidget'
 import { setFriends } from 'state'
 
@@ -14,7 +13,8 @@ export default function ProfilePage() {
   const token = useSelector((state) => state.token);
   const loggedInId = useSelector((state) => state.user._id)
   const friends = useSelector((state) => state.user.friends);
-  const isFriend = friends.find((friend) => friend._id/*Map of friends*/ === loggedInId/*LoggedInId*/);
+  const isFriend = friends?.find((friend) => friend._id === userId);
+  const navigate = useNavigate()
 
   const getUser = async () => {
     const response = await fetch(`http://localhost:5000/users/${userId}`, {
@@ -27,7 +27,7 @@ export default function ProfilePage() {
 
   const patchFriend = async () => {
     const response = await fetch(
-      `http://localhost:5000/users/${userId}/${loggedInId}`,
+      `http://localhost:5000/users/${loggedInId}/${userId}`,
       {
         method: "PATCH",
         headers: {
@@ -51,10 +51,10 @@ export default function ProfilePage() {
   const options = { month: "long" };
 
   const displayAddButton = () => {
-    if(isFriend){
-      return <button onClick={patchFriend}>Remove Friend</button>
-    } else {
-      return <button onClick={patchFriend}>Add Friend</button>
+    if(!isFriend){
+      return <button onClick={patchFriend} className="add-button">Add Friend</button>
+    } else if(isFriend) {
+      return <button onClick={patchFriend} className="remove-button">Remove Friend</button>
     }
   }
   return (
@@ -70,19 +70,14 @@ export default function ProfilePage() {
           </div>
         </div>
         <div className='right'>
-        <h4>{`Member Since: ${new Intl.DateTimeFormat("en-US", options).format(new Date(user.createdAt))} ${new Date(user.createdAt).getYear() + 1900}`}</h4>
-        <h4>{`Friends: ${friends.length} `}</h4>
+          <h4>{`Member Since: ${new Intl.DateTimeFormat("en-US", options).format(new Date(user.createdAt))} ${new Date(user.createdAt).getYear() + 1900}`}</h4>
+          <h4 onClick={()=>navigate(`/profile/${userId}/friends`)}>{`Friends: ${friends.length} `}</h4>
           <div className='button-container'>
-          {loggedInId !== userId && displayAddButton()}
-          {loggedInId !== userId ? <button>Send Message</button> : <button>Edit Profile</button>}
+            {loggedInId !== userId && displayAddButton()}
+            {loggedInId !== userId ? <button>Send Message</button> : <button>Edit Profile</button>}
           </div>
         </div>
-        
-        
       </div>
-      
-      
-      <FriendListWidget userId={userId} />
       <PostsWidget userId={user._id}  isProfile="true" />
     </div>
   )
