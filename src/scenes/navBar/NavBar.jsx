@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch} from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setLogout, setMode } from 'state';
 import { MdMessage, MdLogout} from 'react-icons/md'
@@ -9,6 +9,7 @@ export default function NavBar() {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const loggedInId = useSelector((state) => state.user._id)
 
   const toggleLogout = () => {
     dispatch(setLogout())
@@ -24,7 +25,7 @@ export default function NavBar() {
       </div>
       <div className='right-nav'>
         <BsFillMoonFill size={"3vh"} onClick={()=> dispatch(setMode())}/>
-        <MdMessage size={"3vh"} />
+        <MdMessage size={"3vh"} onClick={()=> navigate(`/conversations/${loggedInId}`)}/>
         <BsFillQuestionCircleFill size={"3vh"} onClick={() => { window.location.href = "https://github.com/aldoportillo/OpenBar"}} />
         <MdLogout size={"3vh"} onClick={toggleLogout}/>
       </div>
