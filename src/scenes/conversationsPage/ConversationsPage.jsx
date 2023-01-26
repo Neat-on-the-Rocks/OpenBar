@@ -19,7 +19,6 @@ export default function ConversationsPage() {
         const data = await response.json();
         setConversations(data)
     }
-    console.log(conversations)
 
     React.useEffect(() => {
         getConversations()
@@ -32,7 +31,9 @@ export default function ConversationsPage() {
   return (
     <div>
         <NavBar />
-        {renderConversations}
+        <div className='conversations-container'>
+            {renderConversations}
+        </div>  
     </div>
   )
 }
