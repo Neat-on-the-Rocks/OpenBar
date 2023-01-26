@@ -5,35 +5,22 @@ import { useNavigate } from 'react-router-dom'
 export default function ConversationBox({id, members}) {
     const navigate = useNavigate()
     const userId = useSelector((state) => state.user._id)
-    const [userInfo, setUserInfo] = React.useState("")
-    const token = useSelector((state) => state.token);
+    const friends = useSelector((state) => state.user.friends);
 
     const renderUser = members.map(member => {
         if(member !== userId){
-            return member
+            const {firstName, lastName, picturePath} = friends.find(friend => friend._id === member) 
+            return (
+              <>
+                <img src={`http://localhost:5000/assets/${picturePath}`} alt="" />
+                <h3>{`${firstName} ${lastName}`}</h3>
+              </>
+            )
         }
         return null
     })
 
-    const getUser = async (id) => {
-      const res = await fetch(
-          `http://localhost:5000/users/${id}`,
-          {
-              method: "GET",
-              headers: { Authorization: `Bearer ${token}` },
-          }
-      );
-          const user = await res.json()
-          setUserInfo(user)
-    }
-
-    React.useEffect(()=> {
-      getUser(id)
-    },[])
-
-    console.log(userInfo);
-
   return (
-    <div onClick={() => navigate(`/messenger/${id}`)}>{renderUser}</div>
+    <div className="conversation-box" onClick={() => navigate(`/messenger/${id}`)}>{renderUser}</div>
   )
 }
