@@ -120,7 +120,7 @@ const createConversation = async () => {
           <h4>{`Friends: ${friends.length} `}</h4>
           <div className='button-container'>
             {loggedInId !== userId && displayAddButton()}
-            {loggedInId !== userId ? <button onClick={()=> sendMessage()}>Send Message</button> : <button>Edit Profile</button>}
+            {loggedInId !== userId ? <button disabled={!isFriend} onClick={()=> sendMessage()}>Send Message</button> : <button>Edit Profile</button>}
           </div>
         </div>
       </div>
