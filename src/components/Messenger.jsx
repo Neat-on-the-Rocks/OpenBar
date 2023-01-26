@@ -27,13 +27,12 @@ export default function Messenger() {
       },[])
 
       const renderMessages= messages?.map(message => {
-        const userData = user._id !== message.sender ? friends.find(friend => friend._id === message.sender) : user;
-        console.log(userData);
+        const { picturePath} = user._id !== message.sender ? friends.find(friend => friend._id === message.sender) : user;
+
         return (
-        <div>
-            <h3>{`${userData?.firstName} ${userData?.lastName}`}</h3>
-            <h3>{message.createdAt}</h3>
-            <h3>{message.text}</h3>
+        <div className={`message-bubble ${user._id !== message.sender ? "friend-message-bubble": "user-message-bubble"}`}>
+            <img src={`http://localhost:5000/assets/${picturePath}`} alt="" />
+            <p>{message.text}</p>
         </div>
         )
       })
@@ -41,8 +40,10 @@ export default function Messenger() {
   return (
     <div>
         <NavBar />
-        {renderMessages}
-        <MessageForm conversationId={conversationId} getMessages={() => getMessages()} sessionNum={sessionNum} setSessionNum={setSessionNum}/>
+        <div className='message-box'>
+            {renderMessages}
+            <MessageForm conversationId={conversationId} getMessages={() => getMessages()} sessionNum={sessionNum} setSessionNum={setSessionNum}/>
+        </div>
     </div>
   )
 }
