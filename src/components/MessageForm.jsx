@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-export default function MessageForm({conversationId, sessionNum, setSessionNum}) {
+export default function MessageForm({conversationId, getMessages}) {
 
     const loggedInId = useSelector((state) => state.user._id)
     const [text, setText] = React.useState("")
@@ -24,7 +24,7 @@ export default function MessageForm({conversationId, sessionNum, setSessionNum})
             }
         )
         setText("")
-        setSessionNum(() => sessionNum+1)
+        getMessages()
         await message.json();
         
 
