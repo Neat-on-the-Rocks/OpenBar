@@ -356,4 +356,86 @@ input:focus {
   background-color: rgb(215, 215, 215);
 }
 
+/*ConversationsPage*/
 
+.conversations-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40vw;
+  height: 100vh;
+}
+
+.conversations-container > .conversation-box{
+  display: flex;
+  align-items: center;
+  width: 20vw;
+  padding: 2vh;
+  margin: 1vh;
+  background-color: var(--widgets);
+  border-radius: 2vh;
+  justify-content: space-between;
+}
+
+.conversations-container > .conversation-box > img{
+  width: 15vh;
+  border-radius: 20vh;
+}
+
+/*MessagePage*/
+
+.message-box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40vw;
+  background-color: var(--widgets);
+}
+
+.message-bubble {
+  display: flex;
+  align-items: center;
+  font-size: larger;
+}
+
+.message-bubble > p {
+  padding: 10px;
+  color: black;
+  border-radius: 10px;
+}
+
+.message-bubble > img {
+  width: 10vh;
+  height: 10vh;
+  border-radius: 10vh;
+  margin: 1vh;
+}
+
+.user-message-bubble{
+  flex-direction: row-reverse;
+  align-self: flex-end;
+}
+.user-message-bubble > p{
+  background-color: var(--accent);
+}
+
+.friend-message-bubble{
+  align-self: flex-start;
+}
+
+.friend-message-bubble > p{
+  background-color: var(--grey);
+}
+
+.message-box > form {
+  display: flex;
+  align-items: center;
+
+}
+.message-box > form > input{
+  background-color: var(--widgets);
+  width: 36vw;
+  height: 5vh;
+  border-radius: 5px;
+  color: white;
+}
